@@ -20,8 +20,11 @@ export default function ParentComponent() {
 
 function ChildComponent({ onIncrement } : any) {
   return (
+    <>
     <button onClick={onIncrement}>
       Increment
     </button>
+      <br/>
+      </>
   );
 }
