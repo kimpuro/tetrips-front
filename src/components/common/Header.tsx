@@ -11,6 +11,7 @@ import {
 } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { PlusIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -37,11 +38,13 @@ export default function Header() {
                   </DisclosureButton>
                 </div>
                 <div className="flex flex-shrink-0 items-center">
+                  <Link href="/">
                   <img
                     className="h-8 w-auto"
                     src="/icons/tetrips-logo.png"
                     alt="tetrips logo"
                   />
+                  </Link>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
