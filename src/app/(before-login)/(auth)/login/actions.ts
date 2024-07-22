@@ -1,5 +1,7 @@
 'use server'
 
+import { redirect } from 'next/navigation'
+
 export async function login(formData: FormData) {
   try {
     const data = {
@@ -16,6 +18,10 @@ export async function login(formData: FormData) {
     console.log(res)
     return res.json();
   } catch (error) {
+    console.log(error)
+    if(error){
+      redirect('error');
+    }
     return error
   }
 }
