@@ -16,7 +16,7 @@ export default function Introduce() {
                 <div className="mt-24 sm:mt-32 lg:mt-16">
                   <a href="#" className="inline-flex space-x-6">
                     <span className="rounded-full bg-indigo-600/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
-                      What's new
+                      테스트 입니다.
                     </span>
                     <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600">
                       <span>Just shipped v0.1.0</span>
@@ -79,17 +79,15 @@ export default function Introduce() {
                           김동은의 코드
                           <br />
                         </p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
-                        <p className="text-red-600">print!("Hello World!");</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
+                        <p className="text-red-600">print!(Hello);</p>
                       </div>
                     </div>
                   </div>

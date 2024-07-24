@@ -5,10 +5,10 @@ import { redirect } from 'next/navigation'
 
 export default function Page() {
 
-  const {data,error} = getUserCookie()
-  if (error || !data?.user) {
-    redirect('/login')
-  }
+  // const {data,error} = getUserCookie()
+  // if (error || !data?.user) {
+  //   redirect('/login')
+  // }
   return (
     <>
       <div className="flex">
