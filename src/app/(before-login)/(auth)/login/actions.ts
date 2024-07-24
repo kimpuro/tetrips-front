@@ -15,7 +15,6 @@ export async function login(formData: FormData) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
-      credentials: 'include', // 쿠키 포함 옵션 추가
     });
     console.log(res)
   } catch (error) {
