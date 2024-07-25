@@ -1,20 +1,42 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { PlusIcon } from '@heroicons/react/20/solid'
 import { BellIcon } from '@heroicons/react/24/outline'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
+import { cookies } from 'next/headers'
+// @ts-ignore
+import { getCookie } from '@/libs/cookieUtils'
+import { deleteUserCookie } from '@/app/(auth)/logout/actions'
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function LoginOut() {
-  // const supabase = createClient()
-  //
-  // const { data, error } = await supabase.auth.getUser()
+  const [username, setUsername] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // if (error || !data?.user) {
-  if(true){ // 테스트용 코드
+  const handleLogout = async () => {
+    await deleteUserCookie()
+    window.location.reload();
+  }
+
+  useEffect(() => {
+    async function fetchUsername() {
+      const usernameCookie = await getCookie('username'); // getCookie 함수가 비동기 방식이라고 가정
+      setUsername(usernameCookie || null); // 쿠키가 없으면 null 설정
+      setIsLoading(false);
+    }
+
+    fetchUsername();
+  }, []);
+
+  if (isLoading) {
+    return null; // 로딩 중에는 아무것도 렌더링하지 않음
+  }
+  if(username === null || username ===undefined){
     return (<>
         <div className="flex flex-1 items-center justify-end gap-x-6">
           <Link
@@ -37,6 +59,7 @@ export default function LoginOut() {
     return (
       <div className="flex items-center">
         <div className="flex-shrink-0">
+          <Link href={'/project'}>
           <button
             type="button"
             className="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -44,6 +67,7 @@ export default function LoginOut() {
             <PlusIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
             New Project
           </button>
+          </Link>
         </div>
         <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
           <button
@@ -107,15 +131,15 @@ export default function LoginOut() {
                 </MenuItem>
                 <MenuItem>
                   {({ focus }) => (
-                    <a
-                      href="#"
+                    <button
+                      onClick={handleLogout}
                       className={classNames(
                         focus ? 'bg-gray-100' : '',
                         'block px-4 py-2 text-sm text-gray-700',
                       )}
                     >
-                      Sign out
-                    </a>
+                      Logout
+                    </button>
                   )}
                 </MenuItem>
               </MenuItems>

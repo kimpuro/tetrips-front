@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 import { GeistSans } from "geist/font/sans";
 import '@/styles/globals.css'
+import { cookies } from 'next/headers'
 
 export const metadata: Metadata = {
   title: {
@@ -15,6 +16,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const cookieStore = cookies()
   return (
     <html lang="ko" className={GeistSans.className}>
       <body>{children}</body>
