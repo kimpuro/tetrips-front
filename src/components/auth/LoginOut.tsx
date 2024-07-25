@@ -12,14 +12,23 @@ function classNames(...classes: string[]) {
 }
 
 export default function LoginOut() {
-  const [username, setUsername] = useState<string | undefined>(undefined);
+  const [username, setUsername] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const usernameCookie = getCookie('username');
-    setUsername(usernameCookie);
+    async function fetchUsername() {
+      const usernameCookie = await getCookie('username'); // getCookie 함수가 비동기 방식이라고 가정
+      setUsername(usernameCookie || null); // 쿠키가 없으면 null 설정
+      setIsLoading(false);
+    }
+
+    fetchUsername();
   }, []);
 
-  if(username === undefined){
+  if (isLoading) {
+    return null; // 로딩 중에는 아무것도 렌더링하지 않음
+  }
+  if(username === null){
     return (<>
         <div className="flex flex-1 items-center justify-end gap-x-6">
           <Link
