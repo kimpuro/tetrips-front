@@ -1,20 +1,25 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { PlusIcon } from '@heroicons/react/20/solid'
 import { BellIcon } from '@heroicons/react/24/outline'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
+import { cookies } from 'next/headers'
+import { getCookie } from '@/libs/cookieUtils'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function LoginOut() {
-  // const supabase = createClient()
-  //
-  // const { data, error } = await supabase.auth.getUser()
+  const [username, setUsername] = useState<string | undefined>(undefined);
 
-  // if (error || !data?.user) {
-  if(true){ // 테스트용 코드
+  useEffect(() => {
+    const usernameCookie = getCookie('username');
+    setUsername(usernameCookie);
+  }, []);
+
+  if(username === undefined){
     return (<>
         <div className="flex flex-1 items-center justify-end gap-x-6">
           <Link
