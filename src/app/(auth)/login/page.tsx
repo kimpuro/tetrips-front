@@ -15,8 +15,8 @@ export default function Login() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      // const res = await fetch(`http://localhost:3000/test/login`, {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login/local`, {
+      const res = await fetch(`http://localhost:3000/test/login`, {
+      // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login/local`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
