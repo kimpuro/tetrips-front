@@ -23,9 +23,8 @@ export default function Login() {
         },
         body: JSON.stringify({ email, password }),
       });
-
+      console.log(res);// 테스트용 콘솔 로그
       if (res.ok) {
-        console.log(res);
         router.push('/');
       } else {
         console.error('Login failed');
