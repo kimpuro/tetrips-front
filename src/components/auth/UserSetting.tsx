@@ -28,7 +28,7 @@ const secondaryNavigation = [
   { name: 'Team members', href: '#', icon: UsersIcon, current: false },
 ]
 
-function classNames(...classes) {
+function classNames(...classes : string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
