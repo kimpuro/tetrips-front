@@ -1,12 +1,7 @@
 import { type Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { GeistSans } from "geist/font/sans";
 import '@/styles/globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
+import { cookies } from 'next/headers'
 
 export const metadata: Metadata = {
   title: {
@@ -21,8 +16,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const cookieStore = cookies()
   return (
-    <html lang="ko" className={inter.variable}>
+    <html lang="ko" className={GeistSans.className}>
       <body>{children}</body>
     </html>
   )
